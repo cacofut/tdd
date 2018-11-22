@@ -22,7 +22,10 @@ import org.junit.Test;
  */
 public class LocacaoService {
     
-    public Locacao alugarFilme(Usuario usuario, Filme filme){
+    public Locacao alugarFilme(Usuario usuario, Filme filme) throws Exception{
+        if( filme.getEstoque() == 0 ){
+            throw new Exception("Sem estoque");
+        }
         Locacao locacao = new Locacao();
         locacao.setFilme(filme);
         locacao.setUsuario(usuario);
@@ -35,19 +38,5 @@ public class LocacaoService {
         return locacao;
     }
     
-    @Test
-    public void teste() {
-        // cenario
-        LocacaoService locacaoService = new LocacaoService();
-        Usuario usuario = new Usuario("usuario 1");
-        Filme filme = new Filme("filme 1", 2, 4.0);
-        
-        //acao
-        Locacao locacao = locacaoService.alugarFilme(usuario, filme);        
-        
-        //verificação
-        Assert.assertTrue(locacao.getValor() == 5.0);
-        Assert.assertTrue(isMesmaData(locacao.getDataLocacao(), new Date()));
-        Assert.assertTrue(isMesmaData(locacao.getDataRetorno(), obterDataComDiferencaDias(1)) );
-    }
+  
 }
