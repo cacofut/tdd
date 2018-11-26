@@ -6,6 +6,7 @@
 package br.com.diagnosticit.models;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -13,7 +14,7 @@ import java.util.Date;
  */
 public class Locacao {
     private Usuario usuario;
-    private Filme filme;
+    private List<Filme> filmes;
     private Date dataLocacao;
     private Date dataRetorno;
     private Double valor;
@@ -26,14 +27,10 @@ public class Locacao {
         this.usuario = usuario;
     }
 
-    public Filme getFilme() {
-        return filme;
+    public void setFilmes(List<Filme> filmes) {
+        this.filmes = filmes;
     }
-
-    public void setFilme(Filme filme) {
-        this.filme = filme;
-    }
-
+    
     public Date getDataLocacao() {
         return dataLocacao;
     }
