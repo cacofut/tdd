@@ -31,7 +31,7 @@ public class LocacaoService {
             throw new LocadoraException("Usuário vazio");
         }
         
-        if( filmes == null ){
+        if( filmes == null || filmes.isEmpty() ){
             throw new LocadoraException("Filmes vazios");
         }
         
@@ -42,7 +42,7 @@ public class LocacaoService {
         }
                  
         Locacao locacao = new Locacao();
-        locacao.setFilmes(filmes);        
+        locacao.setFilmes(filmes);          
         locacao.setUsuario(usuario);
         
         locacao.setDataLocacao(new Date());
